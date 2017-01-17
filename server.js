@@ -14,14 +14,13 @@ app.use(express.static(path.join(__dirname, "public")));
 	
 io.on('connection', function(socket){
     
-    console.log('new connection smartFlorest'); 
-      
-        display.loopdata(1000, 'json' , function(data){
-            let dt = datetime.create();
-            let fomratted = dt.format('d/m/Y H:M:S');
-            display.data = { temperatura :  Math.random() , datetime : fomratted }
-            socket.emit('sendatatemp', {arg:data}); 
-        });          
+    console.log('new connection Smart Florest'); 
+      display.loopdata(1000, 'json' , (data) => {
+        let dt = datetime.create();
+        let fomratted = dt.format('d/m/Y H:M:S');
+        display.data = { temperatura :  Math.random() , datetime : fomratted }
+        socket.emit('sendatatemp', {arg:data}); 
+      });        
 });
 
 server.listen(portHttp, function(){
