@@ -16,8 +16,8 @@
     <script>
         var socket = io('http://localhost:8080');
         //ouvinte 
-        socket.on('message-from-server', function(evt){  
-            document.body.appendChild(document.createTextNode(evt.greeting));
+        socket.on('sendatatemp', function(evt){  
+            document.body.appendChild(document.createTextNode(evt.arg));
             document.body.appendChild(document.createElement('br'));
         })
 
